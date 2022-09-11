@@ -3,13 +3,13 @@ import Head from "next/head"
 import NavBar from "../../components/nav/navbar"
 import SectionCards from "../../components/card/section-cards"
 import { getFavVideos } from "../../lib/videos"
-import useRedirectUser from '../../utils/redirectUser'
+import { redirectUser } from '../../utils/redirectUser'
 
 import styles from '../../styles/mylist.module.css'
 
 
 export async function getServerSideProps(context) {
-    const { userId, token } = await useRedirectUser(context)
+    const { userId, token } = await redirectUser(context)
     const myListVideos = await getFavVideos(userId, token)
 
     return {

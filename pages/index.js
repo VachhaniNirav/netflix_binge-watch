@@ -6,12 +6,12 @@ import Banner from '../components/banner/banner'
 import SectionCards from '../components/card/section-cards'
 
 import { getVideos, getPopularVideos, getWatchItAgainVideos } from '../lib/videos'
-import useRedirectUser from '../utils/redirectUser'
+import { redirectUser } from '../utils/redirectUser'
 
 
 export async function getServerSideProps(context) {
 
-  const { userId, token } = await useRedirectUser(context)
+  const { userId, token } = await redirectUser(context)
 
   const disneyVideos = await getVideos("disney movies")
   const productivityVideos = await getVideos("productivity lessons")
